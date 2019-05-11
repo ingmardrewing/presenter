@@ -1,3 +1,5 @@
+./testResources/createdPdfs
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
