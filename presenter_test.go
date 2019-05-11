@@ -1,6 +1,8 @@
 package presenter
 
 import (
+	"fmt"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -8,8 +10,21 @@ import (
 	"github.com/ingmardrewing/fs"
 )
 
+func TestMain(m *testing.M) {
+	setUp()
+	code := m.Run()
+	tearDown()
+	os.Exit(code)
+}
+
+func setUp() {
+	dir := path.Join(getTestFileDirPath(), "testResources/createdPdfs")
+	fs.CreateDir(dir)
+}
+
 func tearDown() {
 	dir := path.Join(getTestFileDirPath(), "testResources/createdPdfs")
+	fmt.Println(dir)
 	fs.RemoveDirContents(dir)
 }
 
